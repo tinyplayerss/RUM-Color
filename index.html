@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Color Palette</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #061726;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin-top: 30px;
+      }
+
+      .color-box {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border-radius: 50%; /* Make it a circle */
+        cursor: pointer;
+        position: relative;
+        overflow: hidden; /* To contain the absolutely positioned hex value */
+        border: 5px solid white;
+      }
+
+      .color-box .hex-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        color: white;
+      }
+
+      .color-box:hover:after {
+        content: attr(data-color);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 14px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5px;
+        border-radius: 3px;
+        display: none;
+      }
+
+      .color-box.copied {
+        animation: flash 1s ease-out;
+      }
+
+      #copySuccess {
+        display: none;
+        color: green;
+        margin-top: 5px;
+      }
+
+      #clipboardHistory {
+        margin-top: 30px;
+      }
+
+      .clipboard-item {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .clipboard-item span {
+        display: block;
+        margin-top: 5px;
+        font-size: 12px;
+        color: #555;
+      }
+
+      @keyframes flash {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .rumbleuser {
+        padding: 6px;
+        border: 2px solid #1f9ad0;
+        background-color: #0b3148;
+        color: #1f9ad0;
+        border-radius: 10px;
+      }
+
+      .rumbleuser:hover {
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-12">
+          <img
+            src="RUM-Colors Logo.png"
+            alt="Logo"
+            class="img-fluid"
+            style="max-width: 0 auto; height: 50px; margin-bottom: 30px"
+          />
+        </div>
+      </div>
+      <p>
+        <a target="_blank" href="https://rumble.com/c/tinyplayerss"
+          ><span class="rumbleuser">@tinyplayerss</span></a
+        >
+        Created this Page for those who want the Rumble color Palette!
+      </p>
+      <div class="row">
+        <div class="col-12">
+          <h2>Rumble Color Palette</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div id="color1" class="color-box" style="background-color: #000312">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color2" class="color-box" style="background-color: #061726">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color3" class="color-box" style="background-color: #85c742">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color4" class="color-box" style="background-color: #d72e59">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color5" class="color-box" style="background-color: #ffffff">
+            <span class="hex-value"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h2>Rumble Studio Color Palette</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div id="color6" class="color-box" style="background-color: #000312">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color7" class="color-box" style="background-color: #061726">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color8" class="color-box" style="background-color: #0b3148">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color9" class="color-box" style="background-color: #74cc1d">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color10" class="color-box" style="background-color: #1f9ad0">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color11" class="color-box" style="background-color: #d72e59">
+            <span class="hex-value"></span>
+          </div>
+          <div id="color12" class="color-box" style="background-color: #ffffff">
+            <span class="hex-value"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p id="copySuccess">Color value copied to clipboard!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" id="clipboardHistory">
+          <h3>Clipboard History</h3>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var colorBoxes = document.querySelectorAll(".color-box");
+
+        colorBoxes.forEach(function (colorBox, index) {
+          var hexValue = rgbToHex(getComputedStyle(colorBox).backgroundColor);
+          colorBox.dataset.color = hexValue; // Set hex value in data attribute
+          colorBox.querySelector(".hex-value").innerText = hexValue;
+          invertTextColor(colorBox); // Apply initial text color
+        });
+
+        colorBoxes.forEach(function (colorBox) {
+          colorBox.addEventListener("click", function () {
+            var hexValue = this.dataset.color;
+            copyToClipboard(hexValue);
+            updateClipboardHistory(hexValue);
+            this.classList.add("copied");
+            $("#copySuccess").fadeIn().delay(1000).fadeOut();
+            setTimeout(function () {
+              colorBox.classList.remove("copied");
+            }, 1000);
+          });
+        });
+
+        function rgbToHex(rgb) {
+          var rgbArray = rgb.match(/\d+/g);
+          return (
+            "#" +
+            Number(rgbArray[0]).toString(16).padStart(2, "0") +
+            Number(rgbArray[1]).toString(16).padStart(2, "0") +
+            Number(rgbArray[2]).toString(16).padStart(2, "0")
+          );
+        }
+
+        function copyToClipboard(text) {
+          var textArea = document.createElement("textarea");
+          textArea.value = text;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("Copy");
+          document.body.removeChild(textArea);
+        }
+
+        function updateClipboardHistory(value) {
+          var historyElement = document.getElementById("clipboardHistory");
+          var clipboardItem = document.createElement("div");
+          clipboardItem.classList.add("clipboard-item");
+          clipboardItem.innerHTML =
+            '<div class="color-box" style="background-color:' +
+            value +
+            ';" data-color="' +
+            value +
+            '">' +
+            '<span class="hex-value">' +
+            value +
+            "</span>" +
+            "</div>";
+          historyElement.appendChild(clipboardItem);
+        }
+
+        function invertTextColor(colorBox) {
+          var hexValue = colorBox.dataset.color;
+          var rgbArray = hexToRgb(hexValue);
+          var brightness =
+            (rgbArray[0] * 299 + rgbArray[1] * 587 + rgbArray[2] * 114) / 1000;
+
+          var textColor = brightness > 128 ? "black" : "white";
+          colorBox.querySelector(".hex-value").style.color = textColor;
+        }
+
+        function hexToRgb(hex) {
+          var bigint = parseInt(hex.substring(1), 16);
+          var r = (bigint >> 16) & 255;
+          var g = (bigint >> 8) & 255;
+          var b = bigint & 255;
+
+          return [r, g, b];
+        }
+      });
+    </script>
+  </body>
+</html>
