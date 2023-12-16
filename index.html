@@ -6,6 +6,35 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+
+    <!-- Add these meta tags for search engines and social platforms -->
+    <meta
+      name="description"
+      content="Explore the RUM-Color Palette for creative design and development projects. Copy hex colors easily and access clipboard history."
+    />
+    <meta
+      name="keywords"
+      content="RUM-Color Palette, hex colors, design, development, color palette, clipboard history"
+    />
+    <meta name="author" content="Your Name or Organization" />
+
+    <!-- Open Graph meta tags for social media (Facebook, Twitter, etc.) -->
+    <meta property="og:title" content="RUM-Color Palette" />
+    <meta
+      property="og:description"
+      content="Explore the RUM-Color Palette for creative design and development projects. Copy hex colors easily and access clipboard history."
+    />
+    <meta property="og:image" content="URL_TO_YOUR_LOGO_OR_FEATURED_IMAGE" />
+    <meta property="og:url" content="YOUR_WEBSITE_URL" />
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="RUM-Color Palette" />
+    <meta
+      name="twitter:description"
+      content="Explore the RUM-Color Palette for creative design and development projects. Copy hex colors easily and access clipboard history."
+    />
+    <meta name="twitter:image" content="URL_TO_YOUR_LOGO_OR_FEATURED_IMAGE" />
     <title>Color Palette</title>
     <link
       rel="stylesheet"
@@ -18,6 +47,8 @@
         color: white;
         margin: 0;
         padding: 0;
+        max-width: 800px;
+        margin: 0 auto;
       }
 
       .container {
@@ -33,7 +64,7 @@
         cursor: pointer;
         position: relative;
         overflow: hidden; /* To contain the absolutely positioned hex value */
-        border: 5px solid white;
+        border: 2px solid white;
       }
 
       .color-box .hex-value {
@@ -71,6 +102,17 @@
 
       #clipboardHistory {
         margin-top: 30px;
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 200px;
+        background: #0b3148;
+        overflow-x: hidden;
+        padding-top: 20px;
+        color: white;
+        z-index: 1;
       }
 
       .clipboard-item {
@@ -83,6 +125,14 @@
         margin-top: 5px;
         font-size: 12px;
         color: #555;
+      }
+
+      .menu-icon {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+        z-index: 2;
       }
 
       @keyframes flash {
@@ -107,6 +157,24 @@
         color: white;
         cursor: pointer;
       }
+
+      .instructions {
+        text-align: left;
+        background-color: #000312;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #0b3148;
+      }
+
+      h2 {
+        text-align: center;
+        padding: 6px;
+        border: 2px solid #1f9ad0;
+        background-color: #0b3148;
+        color: #1f9ad0;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -121,12 +189,39 @@
           />
         </div>
       </div>
-      <p>
-        <a target="_blank" href="https://rumble.com/c/tinyplayerss"
-          ><span class="rumbleuser">@tinyplayerss</span></a
-        >
-        Created this Page for those who want the Rumble color Palette!
-      </p>
+      <span class="menu-icon" onclick="toggleHistoryPanel()">
+        &#9776; Clipboard History
+      </span>
+      <!-- Instructions Section -->
+      <div class="instructions">
+        <h2>How to Use RUM-Color</h2>
+        <ol>
+          <li>
+            <p>
+              Welcome to RUM-Color Click on any color Circle to copy its hex
+              value to your clipboard. The hex value will be displayed for you.
+            </p>
+          </li>
+          <li>
+            <p>
+              Explore the Rumble Color Palette and the Rumble Studio Color
+              Palette below. Colors are conveniently organized for your design
+              and development projects.
+            </p>
+          </li>
+          <li>
+            <p>
+              Check the "Clipboard History" section to see a log of copied
+              colors.
+            </p>
+          </li>
+          <li>
+            <p>Enjoy using RUM-Color Palette for your creative endeavors!</p>
+          </li>
+        </ol>
+      </div>
+      <!-- End Instructions Section -->
+
       <div class="row">
         <div class="col-12">
           <h2>Rumble Color Palette</h2>
@@ -197,6 +292,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
+      function toggleHistoryPanel() {
+        var historyPanel = document.getElementById("clipboardHistory");
+        historyPanel.style.display =
+          historyPanel.style.display === "none" ? "block" : "none";
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         var colorBoxes = document.querySelectorAll(".color-box");
 
