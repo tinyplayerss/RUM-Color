@@ -17,25 +17,7 @@
       content="RUM-Color Palette, hex colors, design, development, color palette, clipboard history"
     />
     <meta name="author" content="Your Name or Organization" />
-
-    <!-- Open Graph meta tags for social media (Facebook, Twitter, etc.) -->
-    <meta property="og:title" content="RUM-Color Palette" />
-    <meta
-      property="og:description"
-      content="Explore the RUM-Color Palette for creative design and development projects. Copy hex colors easily and access clipboard history."
-    />
-    <meta property="og:image" content="URL_TO_YOUR_LOGO_OR_FEATURED_IMAGE" />
-    <meta property="og:url" content="YOUR_WEBSITE_URL" />
-
-    <!-- Twitter Card meta tags -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="RUM-Color Palette" />
-    <meta
-      name="twitter:description"
-      content="Explore the RUM-Color Palette for creative design and development projects. Copy hex colors easily and access clipboard history."
-    />
-    <meta name="twitter:image" content="URL_TO_YOUR_LOGO_OR_FEATURED_IMAGE" />
-    <title>Color Palette</title>
+    <title>RUM-Color</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -59,7 +41,7 @@
         display: inline-block;
         width: 100px;
         height: 100px;
-        margin: 10px;
+        margin: 2px;
         border-radius: 50%; /* Make it a circle */
         cursor: pointer;
         position: relative;
@@ -161,9 +143,10 @@
       .instructions {
         text-align: left;
         background-color: #000312;
-        padding: 10px;
+        padding: 6px;
         border-radius: 10px;
         border: 1px solid #0b3148;
+        margin-bottom: 5px;
       }
 
       h2 {
@@ -173,8 +156,8 @@
         background-color: #0b3148;
         color: #1f9ad0;
         border-radius: 10px;
-        margin-top: 10px;
         font-size: 20px;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -188,6 +171,39 @@
             class="img-fluid"
             style="max-width: 0 auto; height: 50px; margin-bottom: 30px"
           />
+        </div>
+      </div>
+      <!-- Social media icons -->
+      <!-- Social media icons and hamburger menu -->
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <!-- Hamburger menu -->
+          <span class="menu-icon" onclick="toggleHistoryPanel()">
+            &#9776; Clipboard History
+          </span>
+
+          <!-- Social media icons -->
+          <div class="ml-2">
+            <a
+              href="https://discord.gg/737N2f6sGx"
+              target="_blank"
+              style="color: white"
+              ><i class="fab fa-discord fa-2x"></i
+            ></a>
+            <a
+              href="https://paypal.me/2players1Gamer"
+              target="_blank"
+              style="color: white"
+              ><i class="fab fa-paypal fa-2x"></i
+            ></a>
+            <a
+              href="https://github.com/tinyplayerss/RUM-Color"
+              target="_blank"
+              style="color: white"
+              ><i class="fab fa-github fa-2x"></i
+            ></a>
+            <!-- Add more icons as needed -->
+          </div>
         </div>
       </div>
       <span class="menu-icon" onclick="toggleHistoryPanel()">
@@ -289,6 +305,10 @@
       </div>
     </div>
 
+    <script
+      src="https://kit.fontawesome.com/739e3ae0dc.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
